@@ -55,6 +55,11 @@ export type Transaction = {
   execution_node?: AddressParam | null;
   allowed_peekers?: Array<string>;
   wrapped?: Pick<Transaction, WrappedTransactionFields>;
+  // zkEvm fields
+  zkevm_verify_hash?: string;
+  zkevm_batch_number?: number;
+  zkevm_status?: string;
+  zkevm_sequence_hash?: string;
 }
 
 export type TransactionsResponse = TransactionsResponseValidated | TransactionsResponsePending;
