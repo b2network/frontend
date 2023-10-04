@@ -54,6 +54,8 @@ import TxAllowedPeekers from 'ui/tx/TxAllowedPeekers';
 import TxSocketAlert from 'ui/tx/TxSocketAlert';
 import useFetchTxInfo from 'ui/tx/useFetchTxInfo';
 
+import TxZkEvmStatus from './TxZkEvmStatus';
+
 const TxDetails = () => {
   const { data, isPlaceholderData, isError, socketStatus, error } = useFetchTxInfo();
 
@@ -140,7 +142,7 @@ const TxDetails = () => {
           <CopyToClipboard text={ data.hash } isLoading={ isPlaceholderData }/>
         </DetailsInfoItem>
         <DetailsInfoItem
-          title="Status and method"
+          title={ config.features.zkEvmRollup.isEnabled ? 'L2 status and method' : 'Status and method' }
           hint="Current transaction state: Success, Failed (Error), or Pending (In Process)"
           isLoading={ isPlaceholderData }
         >
@@ -151,13 +153,12 @@ const TxDetails = () => {
             </Tag>
           ) }
         </DetailsInfoItem>
-        { data.zkevm_status && (
+        { config.features.zkEvmRollup.isEnabled && (
           <DetailsInfoItem
-            title="ZkEVM status"
-            // hint="Current transaction state: Success, Failed (Error), or Pending (In Process)"
+            title="Confirmation status"
             isLoading={ isPlaceholderData }
           >
-            { data.zkevm_status }
+            <TxZkEvmStatus status={ data.zkevm_status } isLoading={ isPlaceholderData }/>
           </DetailsInfoItem>
         ) }
         { data.revert_reason && (
@@ -193,7 +194,6 @@ const TxDetails = () => {
         { data.zkevm_batch_number && (
           <DetailsInfoItem
             title="Tx batch"
-            // hint="Block number containing the transaction"
             isLoading={ isPlaceholderData }
           >
             <BlockEntityL2
@@ -307,22 +307,31 @@ const TxDetails = () => {
 
         <DetailsInfoItemDivider/>
 
-        { data.zkevm_batch_number && (
+        { data.zkevm_sequence_hash && (
           <DetailsInfoItem
             title="Sequence tx hash"
-            // hint="Value sent in the native token (and USD) if applicable"
+            flexWrap="nowrap"
+
             isLoading={ isPlaceholderData }
           >
-            { data.zkevm_sequence_hash }
+            <Skeleton isLoaded={ !isPlaceholderData } overflow="hidden">
+              <HashStringShortenDynamic hash={ data.zkevm_sequence_hash }/>
+            </Skeleton>
+            <CopyToClipboard text={ data.zkevm_sequence_hash } isLoading={ isPlaceholderData }/>
           </DetailsInfoItem>
         ) }
         { data.zkevm_verify_hash && (
           <DetailsInfoItem
             title="Verify tx hash"
-            // hint="Value sent in the native token (and USD) if applicable"
+            flexWrap="nowrap"
             isLoading={ isPlaceholderData }
           >
-            { data.zkevm_verify_hash }
+            <Skeleton isLoaded={ !isPlaceholderData } overflow="hidden">
+
+              <HashStringShortenDynamic hash={ data.zkevm_verify_hash }/>
+            </Skeleton>
+            <CopyToClipboard text={ data.zkevm_verify_hash } isLoading={ isPlaceholderData }/>
+
           </DetailsInfoItem>
         ) }
 
