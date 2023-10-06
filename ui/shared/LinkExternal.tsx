@@ -34,7 +34,7 @@ const LinkExternal = ({ href, children, className, isLoading, variant }: Props) 
 
   if (isLoading) {
     return (
-      <Box className={ className } { ...styleProps } fontSize="sm" lineHeight={ 5 } display="inline-block" alignItems="center">
+      <Box className={ className } { ...styleProps } display="inline-block" alignItems="center">
         { children }
         <Skeleton boxSize={ 4 } verticalAlign="middle" display="inline-block"/>
       </Box>
@@ -42,7 +42,7 @@ const LinkExternal = ({ href, children, className, isLoading, variant }: Props) 
   }
 
   return (
-    <Link className={ className } { ...styleProps } fontSize="sm" lineHeight={ 5 } display="inline-block" alignItems="center" target="_blank" href={ href }>
+    <Link className={ className } { ...styleProps } display="inline-block" alignItems="center" target="_blank" href={ href }>
       { children }
       <Icon as={ arrowIcon } boxSize={ 4 } verticalAlign="middle" color="gray.400"/>
     </Link>
