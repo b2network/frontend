@@ -14,10 +14,10 @@ export const featureEnvs = {
   beaconChain: [
     { name: 'NEXT_PUBLIC_HAS_BEACON_CHAIN', value: 'true' },
   ],
-  rollup: [
-    { name: 'NEXT_PUBLIC_IS_L2_NETWORK', value: 'true' },
+  optimisticRollup: [
+    { name: 'NEXT_PUBLIC_IS_OPTIMISTIC_L2_NETWORK', value: 'true' },
     { name: 'NEXT_PUBLIC_L1_BASE_URL', value: 'https://localhost:3101' },
-    { name: 'NEXT_PUBLIC_L2_WITHDRAWAL_URL', value: 'https://localhost:3102' },
+    { name: 'NEXT_PUBLIC_OPTIMISTIC_L2_WITHDRAWAL_URL', value: 'https://localhost:3102' },
   ],
   bridgedTokens: [
     {

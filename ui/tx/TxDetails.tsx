@@ -405,7 +405,7 @@ const TxDetails = () => {
             ) }
           </DetailsInfoItem>
         ) }
-        { data.tx_burnt_fee && !config.features.rollup.isEnabled && (
+        { data.tx_burnt_fee && !config.features.optimisticRollup.isEnabled && (
           <DetailsInfoItem
             title="Burnt fees"
             hint={ `Amount of ${ config.chain.currency.symbol } burned for this transaction. Equals Block Base Fee per Gas * Gas Used` }
@@ -420,7 +420,7 @@ const TxDetails = () => {
             />
           </DetailsInfoItem>
         ) }
-        { config.features.rollup.isEnabled && (
+        { config.features.optimisticRollup.isEnabled && (
           <>
             { data.l1_gas_used && (
               <DetailsInfoItem
