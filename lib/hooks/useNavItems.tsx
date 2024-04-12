@@ -1,3 +1,5 @@
+/* eslint-disable array-bracket-spacing */
+/* eslint-disable template-curly-spacing */
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -54,12 +56,12 @@ export default function useNavItems(): ReturnType {
     } : null;
 
     const verifiedContracts: NavItem | null =
-     {
-       text: 'Verified contracts',
-       nextRoute: { pathname: '/verified-contracts' as const },
-       icon: 'verified',
-       isActive: pathname === '/verified-contracts',
-     };
+    {
+      text: 'Verified contracts',
+      nextRoute: { pathname: '/verified-contracts' as const },
+      icon: 'verified',
+      isActive: pathname === '/verified-contracts',
+    };
     const ensLookup = config.features.nameService.isEnabled ? {
       text: 'Name services lookup',
       nextRoute: { pathname: '/name-domains' as const },
@@ -100,9 +102,9 @@ export default function useNavItems(): ReturnType {
         [
           txs,
           // eslint-disable-next-line max-len
-          { text: `Deposits (L1${ rightLineArrow }L2)`, nextRoute: { pathname: '/deposits' as const }, icon: 'arrows/south-east', isActive: pathname === '/deposits' },
+          // { text: `Deposits (L1${ rightLineArrow }L2)`, nextRoute: { pathname: '/deposits' as const }, icon: 'arrows/south-east', isActive: pathname === '/deposits' },
           // eslint-disable-next-line max-len
-          { text: `Withdrawals (L2${ rightLineArrow }L1)`, nextRoute: { pathname: '/withdrawals' as const }, icon: 'arrows/north-east', isActive: pathname === '/withdrawals' },
+          // { text: `Withdrawals (L2${ rightLineArrow }L1)`, nextRoute: { pathname: '/withdrawals' as const }, icon: 'arrows/north-east', isActive: pathname === '/withdrawals' },
         ],
         [
           blocks,
@@ -124,9 +126,9 @@ export default function useNavItems(): ReturnType {
         [
           txs,
           // eslint-disable-next-line max-len
-          { text: `Deposits (L1${ rightLineArrow }L2)`, nextRoute: { pathname: '/deposits' as const }, icon: 'arrows/south-east', isActive: pathname === '/deposits' },
+          { text: `Deposits (L1${rightLineArrow}L2)`, nextRoute: { pathname: '/deposits' as const }, icon: 'arrows/south-east', isActive: pathname === '/deposits' },
           // eslint-disable-next-line max-len
-          { text: `Withdrawals (L2${ rightLineArrow }L1)`, nextRoute: { pathname: '/withdrawals' as const }, icon: 'arrows/north-east', isActive: pathname === '/withdrawals' },
+          { text: `Withdrawals (L2${rightLineArrow}L1)`, nextRoute: { pathname: '/withdrawals' as const }, icon: 'arrows/north-east', isActive: pathname === '/withdrawals' },
         ],
         [
           blocks,
@@ -296,5 +298,5 @@ export default function useNavItems(): ReturnType {
     };
 
     return { mainNavItems, accountNavItems, profileItem };
-  }, [ pathname ]);
+  }, [pathname]);
 }
